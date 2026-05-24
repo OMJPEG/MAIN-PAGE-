@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>x1A Activity Tracker</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ICONS -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .glass-header {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        /* GLOW TEXT */
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* FEATURE CARD */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* HERO GLOW */
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent 70%);
+            filter: blur(100px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 999px;
+        }
+    </style>
+
+</head>
+
+<body class="font-sans">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header id="site-header" class="glass-header sticky top-0 z-50 w-full border-b border-white/10">
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex items-center justify-between h-20">
+
+                <!-- LOGO -->
+                <a href="#" class="flex items-center gap-3 min-w-[220px]">
+
+                    <div
+                        class="h-11 w-11 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center">
+
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+
+                        </svg>
+
+                    </div>
+
+                    <div class="flex items-baseline gap-1">
+
+                        <span class="text-white text-2xl font-bold">
+                            x1A
+                        </span>
+
+                        <span class="text-white/40 text-lg">
+                            Tracker
+                        </span>
+
+                    </div>
+
+                </a>
+
+                <!-- NAV LINKS -->
+                <nav
+                    class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-3 py-2">
+
+                    <a href="#features"
+                        class="px-5 py-2 rounded-xl text-sm font-medium text-white hover:bg-white hover:text-black transition-all duration-300">
+
+                        Features
+
+                    </a>
+
+                    <a href="#about"
+                        class="px-5 py-2 rounded-xl text-sm font-medium text-white hover:bg-white hover:text-black transition-all duration-300">
+
+                        About
+
+                    </a>
+
+                    <a href="#stats"
+                        class="px-5 py-2 rounded-xl text-sm font-medium text-white hover:bg-white hover:text-black transition-all duration-300">
+
+                        Stats
+
+                    </a>
+
+                </nav>
+
+                <!-- BUTTONS -->
+                <div class="hidden md:flex items-center gap-3 min-w-[220px] justify-end">
+
+                    <a href="login.html"
+                        class="px-5 py-2.5 rounded-xl border border-white/15 text-sm font-medium text-white hover:bg-white hover:text-black transition-all duration-300">
+
+                        Log In
+
+                    </a>
+
+                    <a href="signup.html"
+                        class="px-6 py-2.5 rounded-xl bg-white text-black text-sm font-semibold hover:scale-105 transition-all duration-300 shadow-xl">
+
+                        Sign Up Free
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="relative min-h-screen flex items-center justify-center text-center px-6">
+
+        <div class="hero-glow"></div>
+
+        <div class="relative z-10 max-w-5xl">
+
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70 mb-8">
+
+                <span class="h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
+
+                Public Beta Live
+
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6">
+
+                Track your
+
+                <span class="gradient-text">
+                    productivity
+                </span>
+
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-white/50 leading-relaxed mb-10">
+
+                x1A helps you manage your daily tasks, focus sessions,
+                analytics and productivity in one futuristic dashboard.
+
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+
+                <a href="signup.html"
+                    class="px-8 py-4 rounded-2xl bg-white text-black font-semibold hover:scale-105 transition-all duration-300">
+
+                    Start Free
+
+                </a>
+
+                <a href="#features"
+                    class="px-8 py-4 rounded-2xl border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-300">
+
+                    Explore Features
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+
+    <section id="features" class="py-28 px-6">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-16">
+
+                <p class="text-primary uppercase tracking-[0.3em] text-sm mb-4">
+                    FEATURES
+                </p>
+
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+
+                    Built for
+
+                    <span class="gradient-text">
+                        productivity
+                    </span>
+
+                </h2>
+
+                <p class="text-white/50 max-w-2xl mx-auto">
+                    Everything you need to track activities, focus better,
+                    and improve your workflow.
+                </p>
+
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- CARD -->
+                <div class="feature-card rounded-3xl p-7">
+
+                    <div class="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center mb-5">
+
+                        <i data-lucide="timer" class="w-6 h-6"></i>
+
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-3">
+                        Pomodoro Timer
+                    </h3>
+
+                    <p class="text-white/50">
+                        Stay focused with built-in Pomodoro sessions and smart productivity tracking.
+                    </p>
+
+                </div>
+
+                <!-- CARD -->
+                <div class="feature-card rounded-3xl p-7">
+
+                    <div class="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center mb-5">
+
+                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-3">
+                        Analytics
+                    </h3>
+
+                    <p class="text-white/50">
+                        Visualize your progress using beautiful charts and statistics.
+                    </p>
+
+                </div>
+
+                <!-- CARD -->
+                <div class="feature-card rounded-3xl p-7">
+
+                    <div class="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center mb-5">
+
+                        <i data-lucide="moon" class="w-6 h-6"></i>
+
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-3">
+                        Dark Mode
+                    </h3>
+
+                    <p class="text-white/50">
+                        Elegant dark interface designed for modern users and developers.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= STATS ================= -->
+
+    <section id="stats" class="py-24 px-6">
+
+        <div class="max-w-5xl mx-auto border border-white/10 rounded-[40px] bg-white/5 p-10">
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+                <div>
+                    <h3 class="text-4xl font-bold gradient-text mb-2">
+                        10K+
+                    </h3>
+
+                    <p class="text-white/50">
+                        Users
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-4xl font-bold gradient-text mb-2">
+                        2M+
+                    </h3>
+
+                    <p class="text-white/50">
+                        Tasks
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-4xl font-bold gradient-text mb-2">
+                        99%
+                    </h3>
+
+                    <p class="text-white/50">
+                        Uptime
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-4xl font-bold gradient-text mb-2">
+                        4.9★
+                    </h3>
+
+                    <p class="text-white/50">
+                        Rating
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about" class="py-28 px-6">
+
+        <div class="max-w-4xl mx-auto rounded-[40px] border border-white/10 bg-white/5 p-10 md:p-16 text-center">
+
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+
+                About
+
+                <span class="gradient-text">
+                    x1A
+                </span>
+
+            </h2>
+
+            <p class="text-white/50 text-lg leading-relaxed">
+
+                x1A is a futuristic productivity platform designed for students,
+                creators and professionals who want to track time,
+                tasks and productivity in one modern dashboard.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="border-t border-white/10 py-10 px-6">
+
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+
+            <p class="text-white/40 text-sm">
+                © 2026 x1A Tracker. All rights reserved.
+            </p>
+
+            <div class="flex items-center gap-6 text-sm text-white/40">
+
+                <a href="#" class="hover:text-white transition">
+                    Privacy
+                </a>
+
+                <a href="#" class="hover:text-white transition">
+                    Terms
+                </a>
+
+                <a href="#" class="hover:text-white transition">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- ICON INIT -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+
+</html>
